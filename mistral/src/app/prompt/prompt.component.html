@@ -1,8 +1,35 @@
 <section>
+  <h2>What is your name and age?</h2>
+  <div class="user-input-area">
+    <div class="user-input-element">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        (keyup)="name_update($event)"
+      />
+    </div>
+    <div class="user-input-element left-margin">
+      <label for="name">Age</label>
+      <input
+        type="text"
+        id="age"
+        name="age"
+        required
+        (keyup)="age_update($event)"
+      />
+    </div>
+  </div>
   <h2>How would you like your story?</h2>
   <textarea
     placeholder="Write here the story you would love to hear..."
+    rows="6"
+    resize="none"
     (keydown.enter)="prompt_update($event)"
   ></textarea>
-  <p>{{ this.prompt_response }}</p>
+  <article>
+    <p>{{ this.prompt_response }}</p>
+  </article>
 </section>

@@ -11,4 +11,9 @@ import { PromptComponent } from './prompt/prompt.component';
 })
 export class AppComponent {
   title = 'mistral';
+  name = '';
+
+  update_name(value: string) {
+    this.name = value;
+  }
 }

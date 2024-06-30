@@ -171,12 +171,16 @@
 <main class="main">
   <div class="content">
     <div class="left-side">
-      <h1>Bedtime story, {{ title }}</h1>
+      @if(this.name != ''){
+      <h1>Bedtime story, {{ this.name }}</h1>
+      } @else{
+      <h1>Bedtime story</h1>
+      }
       <p>Ready for a new story? 🎉</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
-      <app-prompt></app-prompt>
+      <app-prompt (newItemEvent)="update_name($event)"></app-prompt>
     </div>
   </div>
 </main>
