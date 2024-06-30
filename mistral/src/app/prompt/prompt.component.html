@@ -1,21 +1,8 @@
 <section>
-  <div>
-    <h2>Test response:</h2>
-    <p>{{ this.response }}</p>
-  </div>
-  <div>
-    <h2>Prompt response:</h2>
-    <form class="prompt-form">
-      <!-- <mat-form-field class="example-full-width">
-        <mat-label>Leave a comment</mat-label> -->
-      <textarea
-        matInput
-        placeholder="Ex. It makes me feel..."
-        (keydown.enter)="prompt_update($event)"
-        [(ngModel)]="prompt"
-      ></textarea>
-      <!-- </mat-form-field> -->
-    </form>
-    <p>{{ this.prompt_response }}</p>
-  </div>
+  <h2>How would you like your story?</h2>
+  <textarea
+    placeholder="Ex. It makes me feel..."
+    (keydown.enter)="prompt_update($event)"
+  ></textarea>
+  <p>{{ this.prompt_response }}</p>
 </section>
