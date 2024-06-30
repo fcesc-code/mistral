@@ -1,7 +1,7 @@
 <section>
   <h2>What is your name and age?</h2>
   <div class="user-input-area">
-    <div class="user-input-element">
+    <div class="user-input-element user-input-name">
       <label for="name">Name</label>
       <input
         type="text"
@@ -11,7 +11,7 @@
         (keyup)="name_update($event)"
       />
     </div>
-    <div class="user-input-element left-margin">
+    <div class="user-input-element left-margin user-input-age">
       <label for="name">Age</label>
       <input
         type="text"
@@ -23,13 +23,5 @@
     </div>
   </div>
   <h2>How would you like your story to start?</h2>
-  <textarea
-    placeholder="Write here the story you would love to hear..."
-    rows="6"
-    resize="none"
-    (keydown.enter)="prompt_update($event)"
-  ></textarea>
-  <article>
-    <p [innerHTML]="this.prompt_response | newlineBreaker"></p>
-  </article>
+  <app-step [name]="name" [age]="age"></app-step>
 </section>

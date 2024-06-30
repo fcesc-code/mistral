@@ -1,0 +1,18 @@
+<article>
+  <textarea
+    placeholder="Write here the story you would love to hear..."
+    rows="6"
+    resize="none"
+    (keydown.enter)="prompt_update($event)"
+  ></textarea>
+  <div>
+    @for(paragraph of this.prompt_response; track $index){
+    <p>{{ paragraph }}</p>
+    }
+  </div>
+  @if(this.response_received){
+  <p (click)="continue_request()">Do you want me to continue the story?</p>
+  } @if(this.nextLevel){
+  <app-step [name]="name" [age]="age"></app-step>
+  }
+</article>
