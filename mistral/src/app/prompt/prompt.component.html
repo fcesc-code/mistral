@@ -22,7 +22,7 @@
       />
     </div>
   </div>
-  <h2>How would you like your story?</h2>
+  <h2>How would you like your story to start?</h2>
   <textarea
     placeholder="Write here the story you would love to hear..."
     rows="6"
@@ -30,6 +30,6 @@
     (keydown.enter)="prompt_update($event)"
   ></textarea>
   <article>
-    <p>{{ this.prompt_response }}</p>
+    <p [innerHTML]="this.prompt_response | newlineBreaker"></p>
   </article>
 </section>

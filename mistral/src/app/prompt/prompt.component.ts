@@ -1,11 +1,12 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../api.service';
 import { inject } from '@angular/core';
+import { NewlineBreaker } from '../newline-breaker.pipe';
 
 @Component({
   selector: 'app-prompt',
   standalone: true,
-  imports: [],
+  imports: [NewlineBreaker],
   templateUrl: './prompt.component.html',
   styleUrl: './prompt.component.sass',
 })
@@ -14,7 +15,7 @@ export class PromptComponent {
   response = '';
   prompt = '';
   name = '';
-  age = 6;
+  age = '6';
   prompt_response = '';
 
   @Output() newItemEvent = new EventEmitter<string>();
@@ -30,7 +31,8 @@ export class PromptComponent {
   }
 
   update_prompt_response(response: string) {
-    if (response != '' && response != 'None') {
+    if (response != '') {
+      console.log('Response received from Mistral', response);
       this.prompt_response = response;
     }
   }
@@ -52,11 +54,13 @@ export class PromptComponent {
     if (event.target.value) {
       this.prompt = event.target.value;
       console.log('user prompt: ', this.prompt);
-      this.apiService.get_chat_response_2(this.prompt).subscribe({
-        next: (data: any) => this.update_prompt_response(JSON.stringify(data)),
-        error: (error: any) => console.error('mistral error:', error),
-      });
-      console.log('mistral response:', this.prompt_response);
+      this.apiService
+        .get_chat_response_2(this.prompt, this.name, this.age)
+        .subscribe({
+          next: (data: any) =>
+            this.update_prompt_response(JSON.stringify(data)),
+          error: (error: any) => console.error('mistral error:', error),
+        });
     }
   }
 }

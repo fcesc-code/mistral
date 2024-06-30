@@ -13,7 +13,11 @@ export class ApiService {
     return this.http.get(this.ENDPOINT);
   }
 
-  get_chat_response_2(prompt: string) {
-    return this.http.post(this.ENDPOINT, { prompt: prompt });
+  get_chat_response_2(prompt: string, name: string, age: string) {
+    return this.http.post(this.ENDPOINT, {
+      prompt: prompt,
+      name: name,
+      age: age,
+    });
   }
 }
