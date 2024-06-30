@@ -21,12 +21,18 @@ export class PromptComponent {
     });
   }
 
+  update_prompt_response(response: string) {
+    if (response != '' && response != 'None') {
+      this.prompt_response = response;
+    }
+  }
+
   prompt_update(event: any) {
     if (event.target.value) {
       this.prompt = event.target.value;
       console.log('user prompt: ', this.prompt);
       this.apiService.get_chat_response_2(this.prompt).subscribe({
-        next: (data: any) => (this.prompt_response = data),
+        next: (data: any) => this.update_prompt_response(JSON.stringify(data)),
         error: (error: any) => console.error('mistral error:', error),
       });
       console.log('mistral response:', this.prompt_response);
